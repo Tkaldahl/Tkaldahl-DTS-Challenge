@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
-import Header from './components/Header'
-import SideNav from './components/SideNav'
-import EpisodesList from './components/EpisodesList'
+import Header from './components/Header/Header'
+import SideNav from './components/SideNav/SideNav'
+import EpisodesList from './components/EpisodesList/EpisodesList'
 
 class App extends Component {
   constructor () {
