@@ -33,7 +33,6 @@ class App extends Component {
         <main>
           <EpisodesList />
         </main>
-        {/* <h1>HelloWorld</h1> */}
       </div>
     );
   }

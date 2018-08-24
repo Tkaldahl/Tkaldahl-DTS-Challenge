@@ -7,7 +7,7 @@ class Header extends Component {
 
     render() {
         return (
-            <h1>HelloWorld</h1>
+            <h1>Live Long and Prosper!</h1>
         )
     }
 }
