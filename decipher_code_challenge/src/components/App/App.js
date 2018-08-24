@@ -10,21 +10,23 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      episodes: null,
+      // episodes: null,
       selectedSeason: null,
       redirect: false,
     }
     this.updateSeason = this.updateSeason.bind(this)
   }
-  componentDidMount() {
-    axios.get('http://ec2-52-90-200-167.compute-1.amazonaws.com:8080/')
-      .then((res) => this.setState({episodes: res.data}))
-      .catch((err) => {console.log(err)})
-  }
+  // componentDidMount() {
+  //   axios.get('http://ec2-52-90-200-167.compute-1.amazonaws.com:8080/')
+  //     .then((res) => this.setState({episodes: res.data}))
+  //     .catch((err) => {console.log(err)})
+  // }
   updateSeason (e) {
     e.preventDefault()
     this.setState({
       selectedSeason: e.target.dataset.id,
+    })
+    this.setState({
       redirect: true
     })
   }
@@ -51,7 +53,7 @@ class App extends Component {
               path='/season/:id'
               exact
               render={() =>{
-                return <EpisodeSeasonSearch />
+                return <EpisodeSeasonSearch selectedSeason={this.state.selectedSeason}/>
               }}
             />
           </Switch>
