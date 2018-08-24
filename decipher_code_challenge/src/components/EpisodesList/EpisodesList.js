@@ -24,6 +24,18 @@ class EpisodesList extends Component {
         for (let i = 0; i < this.state.episodes.length; i++) {
             episodes.push(<Episode episode={this.state.episodes[i]} />)
         }
+        let sortKey = this.props.sortCriteria
+        function compare(a,b) {
+            let aValue = a.props.episode[sortKey]
+            let bValue = b.props.episode[sortKey]
+            if (aValue < bValue) {
+                return -1;
+            } else if (aValue > bValue) {
+                return 1;
+            } else return 0;
+          }
+          
+        episodes.sort(compare);
         return (
         <div className='episodeContainer'>
             {episodes}
