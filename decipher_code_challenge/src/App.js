@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
 
 class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      episodes: null
+    }
+    this.resData = this.resData.bind(this)
+  }
+  resData () {
+    axios.get('http://ec2-52-90-200-167.compute-1.amazonaws.com:8080/')
+      .then((res) => this.setState({episodes: res.data}), console.log(this.state.episodes))
+      .catch((err) => {console.log(err)})
+    }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button onClick={this.resData}>Click Me!</button>
       </div>
     );
   }
