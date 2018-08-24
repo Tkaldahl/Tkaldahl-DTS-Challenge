@@ -21,12 +21,9 @@ class EpisodesList extends Component {
     
     render() {
         let episodes = []
-        console.log(this.state.episodes.length)
         for (let i = 0; i < this.state.episodes.length; i++) {
-            console.log(this.state.episodes[i])
             episodes.push(<Episode episode={this.state.episodes[i]} />)
         }
-        console.log(episodes)
         return (
         <div className='episodeContainer'>
             {episodes}
