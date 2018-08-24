@@ -11,11 +11,14 @@ class App extends Component {
     }
     this.resData = this.resData.bind(this)
   }
-  resData () {
+  componentDidMount() {
     axios.get('http://ec2-52-90-200-167.compute-1.amazonaws.com:8080/')
       .then((res) => this.setState({episodes: res.data}), console.log(this.state.episodes))
       .catch((err) => {console.log(err)})
-    }
+  }
+  resData () {
+    console.log(this.state.episodes)
+  }
   render() {
     return (
       <div className="App">
