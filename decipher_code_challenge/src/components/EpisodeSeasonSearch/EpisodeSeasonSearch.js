@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 
 class EpisodeSeasonSearch extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+
     render() {
         return (
-            <h1>{this.req}</h1>
+            <h1>HelloWorld</h1>
         )
     }
 }
