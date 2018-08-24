@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import Header from './components/Header'
+import SideNav from './components/SideNav'
+import EpisodesList from './components/EpisodesList'
 
 class App extends Component {
   constructor () {
@@ -21,8 +23,17 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <button onClick={this.resData}>Click Me!</button>
+      <div className="AppContainer">
+        <header>
+          <Header />
+        </header>
+        <nav>
+          <SideNav />
+        </nav>
+        <main>
+          <EpisodesList />
+        </main>
+        {/* <h1>HelloWorld</h1> */}
       </div>
     );
   }
