@@ -24,7 +24,15 @@ class SideNav extends Component {
                     <a href="/season/5" onClick={this.props.updateSeason} data-id="5">Season 5</a>
                     <a href="/season/6" onClick={this.props.updateSeason} data-id="6">Season 6</a>
                     <a href="/season/7" onClick={this.props.updateSeason} data-id="7">Season 7</a>
+                    </div>
                 </div>
+                <div className="dropdown">
+                    <button className="dropbtn">Sort By</button>
+                    <div className="dropdown-content">
+                    <a href="/season/1" onClick={this.props.sortFunction} data-id="originalTitle">Title</a>
+                    <a href="/season/2" onClick={this.props.sortFunction} data-id="averageRating">Average Rating</a>
+                    <a href="/season/3" onClick={this.props.sortFunction} data-id="numVotes">Number of Votes</a>
+                    </div>
                 </div>
             </div>
         )

@@ -10,17 +10,14 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      // episodes: null,
       selectedSeason: null,
       redirect: false,
+      sortCriteria: null,
     }
     this.updateSeason = this.updateSeason.bind(this)
+    this.sortFunction = this.sortFunction.bind(this)
   }
-  // componentDidMount() {
-  //   axios.get('http://ec2-52-90-200-167.compute-1.amazonaws.com:8080/')
-  //     .then((res) => this.setState({episodes: res.data}))
-  //     .catch((err) => {console.log(err)})
-  // }
+  
   updateSeason (e) {
     e.preventDefault()
     this.setState({
@@ -30,12 +27,21 @@ class App extends Component {
       redirect: true
     })
   }
+  sortFunction (e) {
+    e.preventDefault()
+    this.setState({
+      sortCriteria: e.target.dataset.id
+    })
+    console.log(this.state.sortCriteria)
+  }
+ 
   render() {
     return (
       <div className="AppContainer">
         <nav>
           <SideNav 
             updateSeason={this.updateSeason}
+            sortFunction={this.sortFunction}
             redirect={this.state.redirect}
             selectedSeason={this.state.selectedSeason}
           />
@@ -46,14 +52,19 @@ class App extends Component {
               path='/'
               exact
               render={() => {
-                return <EpisodesList />}
+                return <EpisodesList
+                  sortCriteria={this.state.sortCriteria}
+                />}
               }
             />
             <Route
               path='/season/:id'
               exact
               render={() =>{
-                return <EpisodeSeasonSearch selectedSeason={this.state.selectedSeason}/>
+                return <EpisodeSeasonSearch
+                  selectedSeason={this.state.selectedSeason}
+                  sortCriteria={this.state.sortCriteria}
+                />
               }}
             />
           </Switch>

@@ -7,6 +7,7 @@ class EpisodeSeasonSearch extends Component {
         super()
         this.state = {
             episodes: [],
+            sortCriteria: 'originalTitle'
         }
     }
     componentDidMount() {
@@ -21,15 +22,24 @@ class EpisodeSeasonSearch extends Component {
     render() {
         let episodes = []
         for (let i = 0; i < this.state.episodes.length; i++) {
-            console.log('the seasonnumber of the episode is ' + this.state.episodes[i].seasonNumber)
-            console.log('the selected seasonNumber is ' + this.props.selectedSeason)
             if (this.state.episodes[i].seasonNumber == this.props.selectedSeason) {
                 episodes.push(<Episode episode={this.state.episodes[i]} />)
             }
         }
+        let sortKey = this.props.sortCriteria
+        function compare(a,b) {
+            let aValue = a.props.episode[sortKey]
+            let bValue = b.props.episode[sortKey]
+            if (aValue < bValue) {
+                return -1;
+            } else if (aValue > bValue) {
+                return 1;
+            } else return 0;
+          }
+          
+        episodes.sort(compare);
         return (
             <div className="searchContainer">
-                <h1>HelloWorld</h1>
                 {episodes}
             </div>
 
