@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RatingsBadge from '../RatingsBadge/RatingsBadge'
+import './Episode.css'
 
 class Episode extends Component {
     render() {

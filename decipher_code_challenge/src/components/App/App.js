@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
-import Header from './components/Header/Header'
-import SideNav from './components/SideNav/SideNav'
-import EpisodesList from './components/EpisodesList/EpisodesList'
+import Header from '../Header/Header'
+import SideNav from '../SideNav/SideNav'
+import EpisodesList from '../EpisodesList/EpisodesList'
+import EpisodeSeasonSearch from '../EpisodeSeasonSearch/EpisodeSeasonSearch'
+import {Switch, Link, Route} from 'react-router-dom'
 
 class App extends Component {
   constructor () {
@@ -24,14 +26,29 @@ class App extends Component {
   render() {
     return (
       <div className="AppContainer">
-        <header>
+        {/* <header>
           <Header />
-        </header>
+        </header> */}
         <nav>
           <SideNav />
         </nav>
         <main>
-          <EpisodesList />
+          <Switch>
+            <Route
+              path='/'
+              exact
+              render={() => {
+                return <EpisodesList />}
+              }
+            />
+            <Route
+              path='/season/:id'
+              exact
+              render={() =>{
+                return <EpisodeSeasonSearch />
+              }}
+            />
+          </Switch>
         </main>
       </div>
     );
